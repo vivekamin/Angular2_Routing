@@ -7,8 +7,9 @@ import { RouterModule , Routes } from '@angular/router';
 import { appRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroesModule } from './heroes/heroes.module';
+import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 
-import { CrisisListComponent } from './crisis-list.component';
+//import { CrisisListComponent } from './crisis-list.component';
 //import { HeroListComponent } from './hero-list.component';
 import { PageNotFoundComponent } from './not-found.component';
 
@@ -17,7 +18,7 @@ import { PageNotFoundComponent } from './not-found.component';
   declarations: [
     AppComponent,
   //  HeroListComponent,
-    CrisisListComponent,
+  //  CrisisListComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -25,6 +26,8 @@ import { PageNotFoundComponent } from './not-found.component';
     FormsModule,
     HttpModule,
     HeroesModule,      //The router accepts the first route that matches a navigation request path.
+    CrisisCenterModule,
+
     appRoutingModule,  //The order of route configuration matters.
 
   ],

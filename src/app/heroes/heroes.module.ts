@@ -8,6 +8,7 @@ import { HeroListComponent }    from './hero-list.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { DummyComponent }    from './hero.dummy-component';
 import { HeroService } from './hero.service';
+
 @NgModule({
   imports: [
     CommonModule,

@@ -5,6 +5,6 @@ import { Component } from '@angular/core'
     <p>Get your crisis here</p>`
 })
 
-export class CrisisListComponent {
+export class CrisisCenterComponent {
 
 }
