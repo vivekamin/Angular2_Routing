@@ -4,20 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule , Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { CrisisListComponent } from './crisis-list.component';
-import { HeroListComponent } from './hero-list.component';
-import { PageNotFoundComponent } from './not-found.component';
-
 import { appRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeroesModule } from './heroes/heroes.module';
 
-
+import { CrisisListComponent } from './crisis-list.component';
+//import { HeroListComponent } from './hero-list.component';
+import { PageNotFoundComponent } from './not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroListComponent,
+  //  HeroListComponent,
     CrisisListComponent,
     PageNotFoundComponent
   ],
@@ -25,7 +24,9 @@ import { appRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    appRoutingModule
+    HeroesModule,      //The router accepts the first route that matches a navigation request path.
+    appRoutingModule,  //The order of route configuration matters.
+
   ],
   providers: [],
   bootstrap: [AppComponent]
