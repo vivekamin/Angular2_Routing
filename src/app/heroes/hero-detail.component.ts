@@ -1,8 +1,10 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { slideInDownAnimation } from '../animation';
-import { Hero, HeroService }  from './hero.service';
+
+import { slideInDownAnimation }           from '../animation';
+
+import { Hero, HeroService }              from './hero.service';
 @Component({
   template: `
   <h2>HEROES</h2>
@@ -28,7 +30,9 @@ export class HeroDetailComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';
   @HostBinding('style.position')  position = 'absolute';
-  hero: Hero;
+  hero : Hero ;
+  name1 = "n";
+  name2 = "n";
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,7 +42,30 @@ export class HeroDetailComponent implements OnInit {
     this.route.params
       // (+) converts string 'id' to a number
       .switchMap((params: Params) => this.service.getHero(+params['id']))
-      .subscribe((hero: Hero) => this.hero = hero);
+      .subscribe(
+        (hero: Hero) => {
+          if(!hero)
+          {
+            console.log("No hero found");
+            this.router.navigate(['/sidekicks']);
+
+
+          }
+          else
+          {
+            //console.log(this.hero === hero);
+            this.hero = hero;
+            console.log(this.hero === hero);
+            //console.log(this.name1 === this.name2);
+            //this.name2 = "1";
+            //console.log(this.name1 === this.name2);
+          }
+
+        },
+        (error) => {
+          console.log("Error");
+        }
+    );
   }
   gotoHeroes() {
     let heroId = this.hero ? this.hero.id : null;

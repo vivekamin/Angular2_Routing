@@ -1,9 +1,12 @@
 // TODO SOMEDAY: Feature Componetized like CrisisCenter
 import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Observable }                     from 'rxjs/Observable';
+import { Component, OnInit }              from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Hero, HeroService }  from './hero.service';
+
+import { Hero, HeroService }              from './hero.service';
+
+
 @Component({
   template: `
     <h2>HEROES</h2>
@@ -16,8 +19,9 @@ import { Hero, HeroService }  from './hero.service';
     </ul>
     <button routerLink="/sidekicks">Go to sidekicks</button>
   `,
-  
+
 })
+
 export class HeroListComponent implements OnInit {
   heroes: Observable<Hero[]>;
   private selectedId: number;
@@ -26,15 +30,19 @@ export class HeroListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
   ngOnInit() {
     this.heroes = this.route.params
       .switchMap((params: Params) => {
         this.selectedId = +params['id'];
         console.log(this.selectedId);
+        console.log(this.service.getHeroes());
         return this.service.getHeroes();
       });
   }
+
   isSelected(hero: Hero) { return hero.id === this.selectedId; }
+
   onSelect(hero: Hero) {
     this.router.navigate(['/hero', hero.id]);
   }

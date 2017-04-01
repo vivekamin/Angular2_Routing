@@ -4,6 +4,7 @@ import { CrisisCenterComponent }     from './crisis-center.component';
 import { CrisisCenterHomeComponent } from './crisis-center-home.component';
 import { CrisisListComponent }       from './crisis-list.component';
 import { CrisisDetailComponent }     from './crisis-detail.component';
+import { PageNotFoundComponent }     from '../not-found.component';
 
 
 const crisisCenterRoutes : Routes = [
@@ -17,16 +18,20 @@ const crisisCenterRoutes : Routes = [
        children: [
          {
            path: ':id',
-           component: CrisisDetailComponent
+           component: CrisisDetailComponent,
          },
          {
            path: '',
            component: CrisisCenterHomeComponent
          }
-       ]
+
+       ],
+
      }
+
    ]
- }
+ },
+
 ]
 
 @NgModule({
